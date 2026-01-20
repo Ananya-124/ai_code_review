@@ -9,12 +9,13 @@ Features
 📊 Quality Scoring: Receive a code quality score with detailed metrics
 Project Structure
 ai-code-reviewer/
-├── app.py                 # Main Streamlit application
-├── code_parser.py         # Code parsing and AST analysis
-├── error_detector.py      # Error detection (unused vars/imports)
-├── ai_suggestor.py        # AI-powered suggestions
-├── requirements.txt       # Python dependencies
-└── README.md             # This file
+app.py                 # Main Streamlit application
+code_parser.py         # Code parsing and AST analysis
+error_detector.py      # Error detection (unused vars/imports)
+ai_suggestor.py        # AI-powered suggestions
+requirements.txt       # Python dependencies
+README.md             # This file
+
 Installation
 Local Setup
 Clone the repository:
@@ -44,6 +45,7 @@ git commit -m "Initial commit: AI Code Reviewer"
 git branch -M main
 git remote add origin https://github.com/yourusername/ai-code-reviewer.git
 git push -u origin main
+
 Step 2: Deploy on Streamlit Cloud
 Go to share.streamlit.io
 Sign in with your GitHub account
