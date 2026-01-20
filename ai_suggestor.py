@@ -3,7 +3,7 @@ import google.generativeai as genai
 def get_ai_suggestion(code_string, previous_suggestions=None, api_key=None):
     # Configure the API
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-pro')
+    model = genai.GenerativeModel('gemini-2.0-flash')
     
     # Handle the previous context to ensure variety
     if previous_suggestions:
