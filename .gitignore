@@ -1,0 +1,13 @@
+# Virtual Environment
+aivenv/
+env/
+ENV/
+
+# Python Bytecode
+__pycache__/
+*.pyc
+
+# Secrets and Environment Variables
+.env
+.streamlit/secrets.toml
+
