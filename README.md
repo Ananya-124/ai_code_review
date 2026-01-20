@@ -96,7 +96,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 License
 MIT License - feel free to use this project for learning and development.
 
-Author
+Ananya 
 Built with ❤️ using Streamlit
 
 Note: This tool analyzes Python code statically. For best results, ensure your code is syntactically correct before analysis.
