@@ -1,27 +1,15 @@
-import google.generativeai as genai
+from google import genai
+import os
 
-def get_ai_suggestion(code_string, previous_suggestions=None, api_key=None):
-    # Configure the API
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-2.0-flash')
+def get_ai_suggestion(code_string, previous_suggestions, api_key):
+    # Initialize the new Client
+    client = genai.Client(api_key=api_key)
     
-    # Handle the previous context to ensure variety
-    if previous_suggestions:
-        prev_context = f"Previous suggestions given were: {previous_suggestions}"
-    else:
-        prev_context = "No previous suggestions."
-
-    # The prompt as seen in your project image
     prompt = f"""
-    Review the following Python code and give concise, practical suggestions.
-    Give DIFFERENT suggestions from these previous ones: {prev_context}
+    Review the following code and give concise suggestions.
+    Give DIFFERENT suggestions from these: {previous_suggestions}
     
-    Explain why Suggestions Were Made: for examples-
-    Not just: "Remove unused import"
-    But: "Unused imports increase memory usage and reduce code readability."
-    
-    Focused on scalability, time/space complexity, readability, performance, best practices.
-    Follow the PEP8 standard coding guidelines for Coding Style Analysis: Highlight issues like improper indentation, naming conventions.
+    Explain the 'why' behind improvements (Performance, PEP8, Logic).
     Score submissions based on style compliance.
     
     Code:
@@ -29,14 +17,11 @@ def get_ai_suggestion(code_string, previous_suggestions=None, api_key=None):
     """
     
     try:
-        response = model.generate_content(prompt)
-        # Returning as a dictionary to match your UI structure
-        return {
-            "type": "AISuggestion",
-            "message": response.text
-        }
+        # Using the new SDK's generate_content method
+        response = client.models.generate_content(
+            model="gemini-1.5-flash", 
+            contents=prompt
+        )
+        return {"message": response.text}
     except Exception as e:
-        return {
-            "type": "Error",
-            "message": str(e)
-        }
+        return {"message": f"Error getting AI suggestion: {str(e)}"}
