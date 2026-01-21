@@ -19,7 +19,7 @@ def get_ai_suggestion(code_string, previous_suggestions, api_key):
     try:
         # Using the new SDK's generate_content method
         response = client.models.generate_content(
-            model="gemini-1.5-flash", 
+            model="gemini-2.5-flash-lite", 
             contents=prompt
         )
         return {"message": response.text}
