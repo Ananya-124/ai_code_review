@@ -25,7 +25,7 @@ def get_ai_suggestion(code_string, previous_suggestions=None, api_key=None):
         # 2. Use the client to generate content
         # Note: 'gemini-2.0-flash' is the stable current version; verify your specific model name.
         response = client.models.generate_content(
-            model='gemini-2.0-flash', 
+            model='gemini-2.5-flash-lite', 
             contents=prompt
         )
         
