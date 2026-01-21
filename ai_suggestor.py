@@ -1,4 +1,4 @@
-import google import genai
+from google import genai
 
 def get_ai_suggestion(code_string, previous_suggestions=None, api_key=None):
     # Configure the API
