@@ -9,8 +9,12 @@ def get_ai_suggestion(code_string, previous_suggestions, api_key):
     Review the following code and give concise suggestions.
     Give DIFFERENT suggestions from these: {previous_suggestions}
     
-    Explain the 'why' behind improvements (Performance, PEP8, Logic).
-    Score submissions based on style compliance.
+   "You are a Senior Software Engineer. Analyze the code and provide feedback in 4 distinct sections.\n"
+    "Use these exact tags to separate sections:\n"
+    "[ERRORS]: List all logical or syntax bugs here.\n"
+    "[SUGGESTIONS]: List style, security, and readability improvements if really necessary for the code also suggesr to remove if any unused variables,imports are there.\n"
+    "[COMPLEXITY]: Provide Big-O time and space complexity analysis.\n"
+    "[FIXED_CODE]: Provide the full corrected code block here only if it has errors and need optimization."
     
     Code:
     {code_string}
