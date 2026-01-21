@@ -1,15 +1,20 @@
-from google import genai
-import os
+import google.generativeai as genai
 
-def get_ai_suggestion(code_string, previous_suggestions, api_key):
-    # Initialize the new Client
-    client = genai.Client(api_key=api_key)
+def get_ai_suggestion(code_string, previous_suggestions=None, api_key=None):
+    # Configure the API
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel('gemini-2.5-flash-lite')
     
+    # Handle the previous context to ensure variety
+    if previous_suggestions:
+        prev_context = f"Previous suggestions given were: {previous_suggestions}"
+    else:
+        prev_context = "No previous suggestions."
+
+    # The prompt as seen in your project image
     prompt = f"""
-    Review the following code and give concise suggestions.
-    Give DIFFERENT suggestions from these: {previous_suggestions}
-    
-   "You are a Senior Software Engineer. Analyze the code and provide feedback in 4 distinct sections.\n"
+    Review the following Python code and give concise, practical suggestions.
+    "You are a Senior Software Engineer. Analyze the code and provide feedback in 4 distinct sections.\n"
     "Use these exact tags to separate sections:\n"
     "[ERRORS]: List all logical or syntax bugs here.\n"
     "[SUGGESTIONS]: List style, security, and readability improvements if really necessary for the code also suggesr to remove if any unused variables,imports are there.\n"
@@ -21,11 +26,14 @@ def get_ai_suggestion(code_string, previous_suggestions, api_key):
     """
     
     try:
-        # Using the new SDK's generate_content method
-        response = client.models.generate_content(
-            model="gemini-2.5-flash-lite", 
-            contents=prompt
-        )
-        return {"message": response.text}
+        response = model.generate_content(prompt)
+        # Returning as a dictionary to match your UI structure
+        return {
+            "type": "AISuggestion",
+            "message": response.text
+        }
     except Exception as e:
-        return {"message": f"Error getting AI suggestion: {str(e)}"}
+        return {
+            "type": "Error",
+            "message": str(e)
+        }
