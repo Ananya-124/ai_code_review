@@ -48,7 +48,7 @@ if "history" not in st.session_state: st.session_state.history = []
 # --- Sidebar ---
 with st.sidebar:
     st.title("⚙️ Control Panel")
-    selected_lang = st.selectbox("Select Language", ["Python", "JavaScript", "Java", "C++", "HTML/CSS"])
+    selected_lang = st.selectbox("Select Language", ["Python"])
     st.info("Static analysis (AST) is currently active for Python.")
     if st.button("🗑️ Clear Review History"):
         st.session_state.history = []
@@ -115,7 +115,7 @@ if st.session_state.ai_response:
                 c1.metric("Unused Variables", len(issues['unused_variables']))
                 c2.metric("Unused Imports", len(issues['unused_imports']))
         else:
-            st.info(f"Local parsing skipped for {selected_lang}. AI Analysis below.")
+            st.info(f"AI Analysis below.")
         
         st.subheader("Logical Errors (AI Detected)")
         st.warning(extract_section("ERRORS", res))
