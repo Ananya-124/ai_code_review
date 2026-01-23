@@ -1,6 +1,8 @@
 AI Code Reviewer 🔍
 An end-to-end AI-powered Python code reviewer built with Streamlit that detects errors, finds unused variables/imports, and provides intelligent suggestions for code improvement.
 
+Check it out here -> https://aicodereview-wcjmccmkhjyasxaljjgf9m.streamlit.app/
+
 Features
 📝 Code Analysis: Parse and analyze Python code structure
 🐛 Error Detection: Identify unused variables and imports
@@ -57,43 +59,8 @@ Main file path: app.py
 Click "Deploy"
 Your app will be live in a few minutes at: https://yourusername-ai-code-reviewer-app-xxxxx.streamlit.app
 
-Usage
-Input Code:
-Type or paste Python code directly
-Or upload a .py file
-Analyze:
-Click "Analyze Code" to detect errors and issues
-Get Suggestions:
-Switch to the "AI Suggestions" tab
-Click "Get AI Suggestions" for improvement recommendations
-Download:
-Download the refactored code with improvements applied
-Example
-Input:
-
-python
-import os
-import sys
-
-def calculate_sum(a, b):
-    unused_var = 10
-    result = a + b
-    return result
-The tool will detect:
-
-Unused import: os
-Unused import: sys
-Unused variable: unused_var
-And provide suggestions for improvement!
-
-Technologies Used
-Streamlit: Web interface
-Python AST: Code parsing and analysis
 
 
-
-License
-MIT License - feel free to use this project for learning and development.
 
 Ananya 
 Built with ❤️ using Streamlit
